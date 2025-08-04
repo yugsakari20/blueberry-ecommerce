@@ -67,7 +67,10 @@ const Home = () => {
         ))}
       </Swiper>
     </div>
+
+    
   );
 };
+
 
 export default Home;

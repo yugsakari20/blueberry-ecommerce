@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   AlignRight,
   User,
@@ -14,6 +15,7 @@ import Logo from "../assets/logo.png";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPagesOpen, setIsPagesOpen] = useState(false);
 
   return (
     <div className="font-sans antialiased text-gray-800 bg-white">
@@ -21,18 +23,14 @@ export default function Navbar() {
         {/* Top Bar */}
         <div className="flex justify-center w-full">
           <div className="w-full max-w-7xl px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            {/* Logo & Mobile Menu Toggle */}
+            {/* Logo & Mobile Toggle */}
             <div className="flex items-center justify-between w-full md:w-auto">
-              <a
-                href="#"
-                className="flex items-center space-x-2 text-2xl font-bold text-gray-900"
-              >
+              <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-gray-900">
                 <img src={Logo} alt="Logo" className="h-10" />
-              </a>
+              </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md"
-                aria-label="Toggle navigation"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <AlignRight size={24} />}
               </button>
@@ -41,22 +39,17 @@ export default function Navbar() {
             {/* Search Bar */}
             <div className="w-full max-w-2xl mx-auto mt-10 px-4">
               <div className="flex border border-gray-300 rounded-full overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-indigo-500">
-                {/* Category Dropdown */}
                 <select className="bg-white text-sm text-gray-700 border-r border-gray-300 px-4 py-3 focus:outline-none rounded-l-full">
                   <option>Vegetables</option>
                   <option>Cold Drinks</option>
                   <option>Fruits</option>
                   <option>Bakery</option>
                 </select>
-
-                {/* Search Input */}
                 <input
                   type="text"
                   placeholder="Search products..."
                   className="flex-1 px-4 py-3 text-sm text-gray-700 focus:outline-none"
                 />
-
-                {/* Search Button */}
                 <button className="bg-blue-800 text-white px-4 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   <Search size={18} />
                 </button>
@@ -100,33 +93,53 @@ export default function Navbar() {
             <div className="w-full max-w-7xl px-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
               {/* Nav Links */}
               <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0">
-                <a
-                  href="#"
+                {/* ✅ Correct Link for Home */}
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 font-medium text-gray-700 hover:text-indigo-600 transition-colors"
                 >
                   <div className="p-2 bg-white rounded-md shadow-sm border border-gray-200">
                     <LayoutGrid size={20} className="text-gray-600" />
                   </div>
                   <span>Home</span>
-                </a>
-                <a
-                  href="#"
-                  className="font-medium text-gray-700 hover:text-indigo-600 transition-colors"
-                >
+                </Link>
+
+                <a href="#" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors">
                   Categories
                 </a>
-                <a
-                  href="#"
-                  className="font-medium text-gray-700 hover:text-indigo-600 transition-colors"
-                >
+                <a href="#" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors">
                   Products
                 </a>
-                <a
-                  href="#"
-                  className="font-medium text-gray-700 hover:text-indigo-600 transition-colors"
-                >
-                  Pages
-                </a>
+
+                {/* Pages Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setIsPagesOpen(!isPagesOpen)}
+                    onMouseEnter={() => window.innerWidth >= 768 && setIsPagesOpen(true)}
+                    onMouseLeave={() => window.innerWidth >= 768 && setIsPagesOpen(false)}
+                    className="flex items-center font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                  >
+                    Pages
+                    <ChevronDown size={16} className="ml-1" />
+                  </button>
+
+                  <div
+                    onMouseEnter={() => window.innerWidth >= 768 && setIsPagesOpen(true)}
+                    onMouseLeave={() => window.innerWidth >= 768 && setIsPagesOpen(false)}
+                    className={`absolute top-8 left-0 w-48 bg-white border border-gray-200 rounded-md shadow-md z-50 transition-all duration-150 ${
+                      isPagesOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
+                  >
+                    <ul className="py-2 text-sm text-gray-700 space-y-1">
+                      <li><Link to="/about" className="block px-4 py-2 hover:bg-gray-100">About Us</Link></li>
+                      <li><Link to="/contact" className="block px-4 py-2 hover:bg-gray-100">Contact Us</Link></li>
+                      <li><Link to="/cart" className="block px-4 py-2 hover:bg-gray-100 text-indigo-600 font-medium">Cart</Link></li>
+                      <li><Link to="/login" className="block px-4 py-2 hover:bg-gray-100">Login</Link></li>
+                      <li><Link to="/register" className="block px-4 py-2 hover:bg-gray-100">Register</Link></li>
+                    </ul>
+                  </div>
+                </div>
+
                 <a
                   href="#"
                   className="relative font-medium text-gray-700 hover:text-indigo-600 transition-colors"
@@ -146,12 +159,11 @@ export default function Navbar() {
               {/* Location Selector */}
               <div className="flex items-center space-x-2 text-gray-700 border border-gray-300 rounded-md px-4 py-2 bg-white shadow-sm cursor-pointer hover:border-indigo-500 transition-colors">
                 <MapPin size={20} className="text-blue-800" />
-                <select>
+                <select className="bg-white focus:outline-none">
                   <option>surat</option>
                   <option>delhi</option>
                   <option>gudgav</option>
                 </select>
-
               </div>
             </div>
           </div>
