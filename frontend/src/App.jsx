@@ -16,7 +16,7 @@ export default function App() {
       <Navbar />
       <div className="min-h-[80vh]">
         <Routes>
-          <Route path="/" element={<Home />} /> {/* 🆕 Home Route */}
+          <Route path="/" element={<Home />} /> 
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />

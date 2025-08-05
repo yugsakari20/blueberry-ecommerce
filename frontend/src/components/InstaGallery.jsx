@@ -8,7 +8,11 @@ const images = [img1, img1, img1, img1, img1, img1];
 
 const InstaGallery = () => {
   return (
+    
     <div className="flex justify-center items-center gap-4 flex-wrap py-10">
+      <div className="text-center text-lg font-semibold text-gray-700 px-6 py-2 rounded-full border border-gray-300 bg-white shadow-sm">
+        #Insta
+      </div>
       {images.map((img, index) => (
         <div
           key={index}
