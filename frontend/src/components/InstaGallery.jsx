@@ -1,7 +1,7 @@
-// InstaGallery.jsx
+
 import React from 'react';
 import { Instagram } from 'lucide-react';
-import img1 from '../assets/4.jpeg'; // Replace with your image paths
+import img1 from '../assets/4.jpeg'; 
 
 
 const images = [img1, img1, img1, img1, img1, img1];
@@ -29,7 +29,7 @@ const InstaGallery = () => {
         </div>
       ))}
 
-      {/* #Insta label in the center */}
+     
       <div className="text-center text-lg font-semibold text-gray-700 px-6 py-2 rounded-full border border-gray-300 bg-white shadow-sm">
         #Insta
       </div>

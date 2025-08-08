@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Hero1 from "../assets/hero-1.png";
 import Hero2 from "../assets/hero-2.png";
 import Hero3 from "../assets/hero-3.png";
@@ -33,8 +36,16 @@ const slides = [
 ];
 
 const Home = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   return (
     <div className="w-full">
+      {/* Hero Section */}
       <div className="h-screen">
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -48,7 +59,7 @@ const Home = () => {
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col md:flex-row items-center justify-between h-full bg-[#f8f8f8] px-8 md:px-20">
-                <div className="w-full md:w-1/2 space-y-6">
+                <div className="w-full md:w-1/2 space-y-6" data-aos="fade-right">
                   <p className="text-gray-500 text-lg">Flat 30% Off</p>
                   <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-800">
                     {slide.title.split(" ").map((word, i) => (
@@ -68,7 +79,7 @@ const Home = () => {
                     Shop Now
                   </button>
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-1/2" data-aos="fade-left">
                   <img
                     src={slide.image}
                     alt={`Slide ${index + 1}`}
@@ -81,35 +92,35 @@ const Home = () => {
         </Swiper>
       </div>
 
-      {/* Categories Section */}
-      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      {/* Sections with scroll animation */}
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="fade-up">
         <Categories />
       </div>
-      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="zoom-in-up">
         <DealSection />
       </div>
-      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="fade-left">
         <CardSection />
       </div>
-      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="fade-right">
         <Banner />
       </div>
-       <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="flip-up">
         <NewArrivals />
       </div>
-       <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="fade-up-right">
         <ServiceCards />
       </div>
-       <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="zoom-in">
         <TopVendors />
       </div>
-       <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="fade-down">
         <TestimonialSlider />
       </div>
-       <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="fade-up-left">
         <BlogCards />
       </div>
-       <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" data-aos="zoom-in-up">
         <InstaGallery />
       </div>
     </div>
