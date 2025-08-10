@@ -58,32 +58,39 @@ export default function Navbar() {
 
             {/* Icons Section */}
             <div className="flex flex-col md:flex-row items-end md:items-center space-y-4 md:space-y-0 md:space-x-8 mt-4 md:mt-0">
-              <div className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+              
+              {/* Account */}
+              <Link to="/login" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
                 <User size={24} className="text-blue-800" />
                 <div className="flex-col hidden sm:flex">
                   <span className="text-xs text-gray-500">Account</span>
                   <span className="text-sm font-semibold">Login</span>
                 </div>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+              </Link>
+
+              {/* Wishlist */}
+              <Link to="/wishlist" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
                 <Star size={24} className="text-blue-800" />
                 <div className="flex-col hidden sm:flex">
                   <span className="text-xs text-gray-500">3 items</span>
                   <span className="text-sm font-semibold">Wishlist</span>
                 </div>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+              </Link>
+
+              {/* Cart */}
+              <Link to="/cart" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
                 <ShoppingCart size={24} className="text-blue-800" />
                 <div className="flex-col hidden sm:flex">
                   <span className="text-xs text-gray-500">4 items</span>
                   <span className="text-sm font-semibold">Cart</span>
                 </div>
-              </div>
+              </Link>
+
             </div>
           </div>
         </div>
 
-        {/* Bottom Navigation */}
+       
         <div
           className={`shadow-sm bg-gray-50 border-t border-gray-200 py-2 ${
             isMobileMenuOpen ? "block" : "hidden"
@@ -91,9 +98,8 @@ export default function Navbar() {
         >
           <div className="flex justify-center">
             <div className="w-full max-w-7xl px-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
-              {/* Nav Links */}
+              
               <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0">
-                {/* ✅ Correct Link for Home */}
                 <Link
                   to="/"
                   className="flex items-center space-x-2 font-medium text-gray-700 hover:text-indigo-600 transition-colors"
@@ -110,8 +116,6 @@ export default function Navbar() {
                 <a href="#" className="font-medium text-gray-700 hover:text-indigo-600 transition-colors">
                   Products
                 </a>
-
-                {/* Pages Dropdown */}
                 <div className="relative">
                   <button
                     onClick={() => setIsPagesOpen(!isPagesOpen)}
@@ -136,6 +140,7 @@ export default function Navbar() {
                       <li><Link to="/cart" className="block px-4 py-2 hover:bg-gray-100 text-indigo-600 font-medium">Cart</Link></li>
                       <li><Link to="/login" className="block px-4 py-2 hover:bg-gray-100">Login</Link></li>
                       <li><Link to="/register" className="block px-4 py-2 hover:bg-gray-100">Register</Link></li>
+                      <li><Link to="/checkout" className="block px-4 py-2 hover:bg-gray-100">checkout</Link></li>
                     </ul>
                   </div>
                 </div>
@@ -156,7 +161,6 @@ export default function Navbar() {
                 </a>
               </div>
 
-              {/* Location Selector */}
               <div className="flex items-center space-x-2 text-gray-700 border border-gray-300 rounded-md px-4 py-2 bg-white shadow-sm cursor-pointer hover:border-indigo-500 transition-colors">
                 <MapPin size={20} className="text-blue-800" />
                 <select className="bg-white focus:outline-none">
