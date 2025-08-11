@@ -44,7 +44,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full container mx-auto">
       {/* Hero Section */}
       <div className="h-screen">
         <Swiper
@@ -58,8 +58,12 @@ const Home = () => {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="flex flex-col md:flex-row items-center justify-between h-full bg-[#f8f8f8] px-8 md:px-20">
-                <div className="w-full md:w-1/2 space-y-6" data-aos="fade-right">
+              <div className="flex flex-col md:flex-row items-center justify-center h-full bg-[#f8f8f8] px-8 md:px-20">
+                {/* Left: Text */}
+                <div
+                  className="w-full md:w-1/2 flex flex-col justify-center items-start md:items-start space-y-6 text-center md:text-left"
+                  data-aos="fade-right"
+                >
                   <p className="text-gray-500 text-lg">Flat 30% Off</p>
                   <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-800">
                     {slide.title.split(" ").map((word, i) => (
@@ -79,7 +83,12 @@ const Home = () => {
                     Shop Now
                   </button>
                 </div>
-                <div className="w-full md:w-1/2" data-aos="fade-left">
+
+                {/* Right: Image */}
+                <div
+                  className="w-full md:w-1/2 flex justify-center items-center"
+                  data-aos="fade-left"
+                >
                   <img
                     src={slide.image}
                     alt={`Slide ${index + 1}`}

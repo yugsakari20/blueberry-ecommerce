@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ChackOut from "./pages/ChackOut";
+import { Products } from "./pages/Products";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
       <Navbar />
       <div className="min-h-[80vh]">
         <Routes>
-          <Route path="/" element={<Home />} /> 
+          <Route path="/" element={<Home />} />   
+          <Route path="/products" element={<Products/>} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
